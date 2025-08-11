@@ -2,22 +2,24 @@
   <div class="dashboard">
     <a-row :gutter="16">
       <!-- 全球风险概览 -->
-      <a-col :span="16">
+      <a-col :span="18">
         <a-card title="全球风险概览" :bordered="false">
           <div class="map-container">
             <div class="world-map">
-              <!-- 这里可以集成地图组件 -->
-              <div class="map-placeholder">
-                <a-empty description="地图组件待集成" />
-              </div>
+              <!-- 使用风险监控组件 -->
+              <RiskAreaMonitor />
+<!--              <div class="map-placeholder">-->
+<!--                <a-empty description="地图组件待集成" />-->
+<!--              </div>-->
             </div>
           </div>
         </a-card>
       </a-col>
       
       <!-- TOP3 预警事件 -->
-      <a-col :span="8">
-        <a-card title="TOP3 预警事件" :bordered="false">
+<!--      <a-row :gutter="8">-->
+      <a-col :span="6">
+        <a-card title=" 预警事件" :bordered="false">
           <a-list :data-source="topWarnings" size="small">
             <template #renderItem="{ item }">
               <a-list-item>
@@ -28,27 +30,36 @@
                   <template #description>
                     <div>{{ item.country }} - {{ item.time }}</div>
                     <div class="warning-desc">{{ item.description }}</div>
+
                   </template>
+
                 </a-list-item-meta>
               </a-list-item>
             </template>
           </a-list>
+          <a-button type="link" style="width: 100%;" @click="$router.push('/warning-report')">
+            查看全部预警
+          </a-button>
+        </a-card>
+        <!-- 新增认证展示卡片 -->
+        <a-card title="认证信息" :bordered="false" style="margin-top: 16px;" class="cert-card" >
+          <CertificationDisplay class="cert-cards" />
         </a-card>
       </a-col>
     </a-row>
 
-    <a-row :gutter="16" style="margin-top: 16px;">
-      <!-- 本周风险趋势 -->
-      <a-col :span="24">
-        <a-card title="本周风险趋势" :bordered="false">
-          <div class="chart-container">
-            <div class="chart-placeholder">
-              <a-empty description="图表组件待集成" />
-            </div>
-          </div>
-        </a-card>
-      </a-col>
-    </a-row>
+<!--    <a-row :gutter="16" style="margin-top: 16px;">-->
+<!--      &lt;!&ndash; 本周风险趋势 &ndash;&gt;-->
+<!--      <a-col :span="24">-->
+<!--&lt;!&ndash;        <a-card title="本周风险趋势" :bordered="false">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="chart-container">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="chart-placeholder">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a-empty description="图表组件待集成" />&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </a-card>&ndash;&gt;-->
+<!--      </a-col>-->
+<!--    </a-row>-->
 
     <a-row :gutter="16" style="margin-top: 16px;">
       <!-- 快速统计 -->
@@ -101,6 +112,8 @@ import {
   DatabaseOutlined 
 } from '@ant-design/icons-vue'
 
+import RiskAreaMonitor from '@/components/RiskAreaMonitor.vue';
+import CertificationDisplay from "@/components/CertificationDisplay.vue";
 // 响应式数据
 const topWarnings = ref([
   {
@@ -146,8 +159,20 @@ onMounted(() => {
   padding: 24px;
 }
 
+.cert-card {
+  width: 100%;
+  height: 100%;
+}
+
+.cert-cards {
+  margin-top: 12px;
+  width: 100%;
+  height: 100%;
+}
 .map-container {
-  height: 400px;
+  padding: 24px;
+  height: 100%;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

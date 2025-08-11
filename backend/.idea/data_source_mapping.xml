@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
-    <file url="file://$PROJECT_DIR$/database/create.sql" value="37e70fc2-fc0b-4a2f-9f90-f0307d4c3d25" />
     <file url="file://$PROJECT_DIR$/database/createtabel.sql" value="37e70fc2-fc0b-4a2f-9f90-f0307d4c3d25" />
+    <file url="file://$PROJECT_DIR$/database/init_data.sql" value="37e70fc2-fc0b-4a2f-9f90-f0307d4c3d25" />
   </component>
 </project>

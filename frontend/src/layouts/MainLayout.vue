@@ -1,6 +1,7 @@
 <template>
   <a-layout class="main-layout">
-    <a-layout-sider v-model:collapsed="collapsed" collapsible>
+    <a-layout-sider v-model:collapsed="collapsed" collapsible
+                    :style="{ overflow: 'auto', height: '100vh' }">
       <div class="logo">
         <h2>风险监控系统</h2>
       </div>
@@ -103,6 +104,8 @@ watch(() => route.path, updateSelectedKeys, { immediate: true })
 <style scoped>
 .main-layout {
   height: 100vh;
+  background: #cf1322;
+  display: flex;
 }
 
 .logo {
@@ -127,10 +130,12 @@ watch(() => route.path, updateSelectedKeys, { immediate: true })
 }
 
 .header-content {
+  margin-left: 200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
 .header-content h1 {
@@ -146,10 +151,20 @@ watch(() => route.path, updateSelectedKeys, { immediate: true })
 }
 
 .content {
-  margin: 24px;
+  //margin: 24px;
+  margin-top: 24px;
+  margin-left: 150px;
   padding: 24px;
   background: #fff;
   border-radius: 6px;
   min-height: calc(100vh - 112px);
 }
-</style> 
+
+:deep(.ant-layout-sider) {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 100px;
+}
+</style>

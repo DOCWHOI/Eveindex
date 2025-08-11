@@ -36,6 +36,18 @@ const routes: RouteRecordRaw[] = [
         name: 'WarningReport',
         component: () => import('@/views/WarningReport.vue'),
         meta: { title: '预警与报告中心' }
+      },
+      {
+        path:'/certificationDisplay',
+        name: 'CertificationDisplay',
+        component: () => import('@/components/CertificationDisplay.vue'),
+        meta: { title: '认证展示' }
+      },
+      {
+        path: '/riskareaMonitor',
+        name: 'RiskAreaMonitor',
+        component: () => import('@/components/RiskAreaMonitor.vue'),
+        meta: { title: '风险区域监控' }
       }
     ]
   }

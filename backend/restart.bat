@@ -1,0 +1,16 @@
+@echo off
+echo 正在重新编译和启动应用...
+
+echo 停止现有应用...
+taskkill /f /im java.exe 2>nul
+
+echo 清理target目录...
+if exist target rmdir /s /q target
+
+echo 编译应用...
+call mvn clean compile
+
+echo 启动应用...
+call mvn spring-boot:run
+
+pause
